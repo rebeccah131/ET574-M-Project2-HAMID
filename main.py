@@ -69,3 +69,15 @@ class DataVisualizer(wx.Frame):
         if len(numeric_cols) == 0:
             wx.MessageBox("No numeric columns available for pie chart.", "Error", wx.OK | wx.ICON_ERROR)
             return
+
+ # Simple pie chart: sum of numeric columns
+        sums = self.df[numeric_cols].sum()
+        sums.plot(kind='pie', autopct='%1.1f%%', startangle=90)
+        plt.title("Pie Chart of Numeric Columns (Sum Values)")
+        plt.ylabel("")
+        plt.show()
+
+if __name__ == "__main__":
+    app = wx.App()
+    DataVisualizer(None, title="Dataset Visualizer")
+    app.MainLoop()
