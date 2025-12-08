@@ -1,1 +1,14 @@
-﻿ID,TYPE,COMMIT#,STATUS,DESCRIPTION,REPORTER ,ASSIGNEE,DUE,CREATED,RESOLVED,NOTES
+﻿ID,COMMIT#,STATUS,DESCRIPTION,DUE,CREATED,RESOLVED,NOTES
+  ba67660,completed,inital commit,12/7/25,/12/7/25
+  14406bd,completed,created main file,12/7/25,/12/7/25
+  ead20e2,completed,created issue tracker,12/7/25,/12/7/25
+  064e220,completed,created data file,12/7/25,/12/7/25
+1-12,064e220,completed,added lines 1-12,12/7/25,/12/7/25
+14-25,8617e42,completed, added lines 14-25,12/7/25,12/7/25
+1-200,cdf07bc,completed, added data lines 1-200,12/7/25,12/7/25
+14,e4dvccf7,completed,remove comment from line 14, 12/7/25,12/7/25
+5-23,36c869b,completed,edited lines 5-23,12/7,25,12/7/25
+25-48,02b209d,completed,edit lines 25-48,12/7/25,/12/7/25
+50-71,ced2e86,completed, add lines 50-71,12/7/25,12/7/25
+73-83,6eee598,completed, add lines 73-83, 12/7/25,12/7/25﻿
+
