@@ -2,23 +2,24 @@ import wx
 import pandas as pd
 import matplotlib.pyplot as plt
 
-x_axis = "age"
-y_axis = "blood_pressure"
+class DataVisualizer(wx.Frame):
+    def __init__(self, parent, title):
+        super().__init__(parent, title=title, size=(600, 400))
 
-class ChronicKidneyDisApp(wx.Frame):
-    def __init__(self, parent=None, title="Chronic Kidney Disease Dataset"):
-        super().__init__(parent, title=title, size=(855, 555))
-        self.SetMinSize((780, 500))
         panel = wx.Panel(self)
-        
-        button = wx.Button(panel, label="Open Chronic Kidney Disease Dataset")
-        font = button.GetFont()
-        font.PointSize += 2
-        button.SetFont(font)
-        button.Bind(wx.EVT_BUTTON, self.on_open)
+        vbox = wx.BoxSizer(wx.VERTICAL)
 
-        sizer = wx.BoxSizer(wx.VERTICAL)
-        sizer.AddStretchSpacer(1)
-        sizer.Add(button, 0, wx.ALIGN_CENTER | wx.ALL, 10)
-        sizer.AddStretchSpacer(2)  # more whitespace below
-        panel.SetSizer(sizer)
+        # Buttons
+        self.load_btn = wx.Button(panel, label='Load CSV')
+        self.load_btn.Bind(wx.EVT_BUTTON, self.load_csv)
+        vbox.Add(self.load_btn, 0, wx.ALL | wx.CENTER, 10)
+
+        self.bar_btn = wx.Button(panel, label='Show Bar Graph')
+        self.bar_btn.Bind(wx.EVT_BUTTON, self.show_bar_graph)
+        vbox.Add(self.bar_btn, 0, wx.ALL | wx.CENTER, 10)
+
+        self.pie_btn = wx.Button(panel, label='Show Pie Chart')
+        self.pie_btn.Bind(wx.EVT_BUTTON, self.show_pie_chart)
+        vbox.Add(self.pie_btn, 0, wx.ALL | wx.CENTER, 10)
+
+        
