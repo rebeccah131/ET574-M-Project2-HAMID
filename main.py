@@ -22,4 +22,27 @@ class DataVisualizer(wx.Frame):
         self.pie_btn.Bind(wx.EVT_BUTTON, self.show_pie_chart)
         vbox.Add(self.pie_btn, 0, wx.ALL | wx.CENTER, 10)
 
-        
+        panel.SetSizer(vbox)
+
+        self.df = None  # Placeholder for the DataFrame
+
+        self.Centre()
+        self.Show()
+
+    def load_csv(self, event):
+        with wx.FileDialog(self, "Open CSV file", wildcard="CSV files (*.csv)|*.csv",
+                           style=wx.FD_OPEN | wx.FD_FILE_MUST_EXIST) as fileDialog:
+            if fileDialog.ShowModal() == wx.ID_CANCEL:
+                return
+            path = fileDialog.GetPath()
+            try:
+                self.df = pd.read_csv(path)
+                wx.MessageBox(f"CSV loaded successfully!\nRows: {len(self.df)}, Columns: {len(self.df.columns)}",
+                              "Info", wx.OK | wx.ICON_INFORMATION)
+            except Exception as e:
+                wx.MessageBox(f"Failed to load CSV:\n{e}", "Error", wx.OK | wx.ICON_ERROR)
+
+    def show_bar_graph(self, event):
+        if self.df is None:
+            wx.MessageBox("Please load a CSV first!", "Error", wx.OK | wx.ICON_ERROR)
+            return
