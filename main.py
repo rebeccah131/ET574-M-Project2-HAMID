@@ -11,7 +11,6 @@ class ChronicKidneyDisApp(wx.Frame):
         self.SetMinSize((780, 500))
         panel = wx.Panel(self)
         
-         # Centered big button
         button = wx.Button(panel, label="Open Chronic Kidney Disease Dataset")
         font = button.GetFont()
         font.PointSize += 2
