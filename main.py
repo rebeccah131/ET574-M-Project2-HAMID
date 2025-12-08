@@ -46,3 +46,26 @@ class DataVisualizer(wx.Frame):
         if self.df is None:
             wx.MessageBox("Please load a CSV first!", "Error", wx.OK | wx.ICON_ERROR)
             return
+        
+        numeric_cols = self.df.select_dtypes(include=np.number).columns
+        if len(numeric_cols) == 0:
+            wx.MessageBox("No numeric columns available for bar graph.", "Error", wx.OK | wx.ICON_ERROR)
+            return
+
+        # Simple bar graph: mean of numeric columns
+        means = self.df[numeric_cols].mean()
+        means.plot(kind='bar', color='skyblue')
+        plt.title("Bar Graph of Numeric Columns (Mean Values)")
+        plt.ylabel("Mean")
+        plt.xlabel("Columns")
+        plt.show()
+
+    def show_pie_chart(self, event):
+        if self.df is None:
+            wx.MessageBox("Please load a CSV first!", "Error", wx.OK | wx.ICON_ERROR)
+            return
+
+        numeric_cols = self.df.select_dtypes(include=np.number).columns
+        if len(numeric_cols) == 0:
+            wx.MessageBox("No numeric columns available for pie chart.", "Error", wx.OK | wx.ICON_ERROR)
+            return
